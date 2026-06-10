@@ -2,8 +2,14 @@ import logging
 import os
 import sys
 
+from contextvars import ContextVar
+
 import loguru
-from pipecat.utils.run_context import run_id_var
+
+try:
+    from pipecat.utils.run_context import run_id_var
+except ImportError:
+    run_id_var = ContextVar("run_id", default=None)
 
 from api.constants import (
     ENVIRONMENT,

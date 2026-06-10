@@ -53,6 +53,15 @@ mcp_app = mcp.http_app(path="/", stateless_http=True)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     async with mcp_app.lifespan(app):
+        if not DATABASE_URL:
+            logger.warning("DATABASE_URL not set — DB-dependent features will fail")
+        if not REDIS_URL:
+            logger.warning("REDIS_URL not set — Redis-dependent features will fail")
+        if not DATABASE_URL or not REDIS_URL:
+            logger.warning(
+                "Set DATABASE_URL and REDIS_URL in environment to enable full functionality"
+            )
+
         # warmup arq pool
         await get_arq_redis()
 
