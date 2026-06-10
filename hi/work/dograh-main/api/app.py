@@ -29,6 +29,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 from loguru import logger
 
 from api.constants import REDIS_URL
@@ -95,6 +96,11 @@ app = FastAPI(
         {"url": "http://localhost:8000", "description": "Local development"},
     ],
 )
+
+
+@app.get("/")
+async def root():
+    return RedirectResponse(url="/docs")
 
 
 # Configure CORS.
