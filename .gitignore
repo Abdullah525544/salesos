@@ -48,3 +48,7 @@ coturn/
 
 # Audio files
 *.wav
+
+# Embedded git repos (not submodules — Back4App can't resolve them)
+hi/work/dograh
+hi/work/dograh-shallow
