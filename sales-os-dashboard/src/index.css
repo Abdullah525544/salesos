@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { @apply border-gray-700; }
+  body { @apply bg-bg text-gray-100; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-gray-600 rounded-full; }
+}
+
+@layer components {
+  .glass { @apply bg-surface/80 backdrop-blur-xl border border-white/5 shadow-lg; }
+  .glass-card { @apply glass rounded-xl p-5; }
+  .stat-value { @apply text-2xl font-bold text-white; }
+  .stat-label { @apply text-xs font-medium text-gray-400 uppercase tracking-wider; }
+  .badge { @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium; }
+  .btn-primary { @apply bg-primary hover:bg-primary-600 text-white px-4 py-2 rounded-lg font-medium transition-colors; }
+  .btn-ghost { @apply hover:bg-white/5 text-gray-300 px-3 py-1.5 rounded-lg transition-colors text-sm; }
+  .input-field { @apply w-full bg-surface-light border border-gray-600 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-primary transition-colors; }
+}
